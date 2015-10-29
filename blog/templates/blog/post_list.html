@@ -31,21 +31,13 @@
 				<p>la lal ala la</p>
 			</div>
 			<div id="reel">
-				<div class="frame">
-					<p>la lal ala la</p>
-				</div>
-				<div class="frame">
-					<p>la lal ala la</p>
-				</div>
-				<div class="framed_text">
-					<p>la lal ala la</p>
-				</div>
-				<div class="framed_vid">
-					<p>la lal ala la</p>
-				</div>
-				<div class="framed_still">
-					<p>la lal ala la</p>
-				</div>
+                {% for post in posts %}
+                    <div class="frame">
+                        <p>Published: {{ post.published_date }}</p>
+                        <h3><a href="">{{ post.title }}</a></h3>
+                        <p>{{ post.text|linebreaks }}</p>
+				    </div>
+                {% endfor %}
 			</div>
 			<div id="rhs">
 				<p>la lal ala la</p>
