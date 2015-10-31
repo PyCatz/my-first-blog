@@ -1,50 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="utf-8">
-	<title>Test Blog</title>
-	<link rel="stylesheet" type="text/css" href="styles.css" />
-</head>
-<body>
-	<div id="container">
-		<div id="banner_back">
-		</div>
-		<div id="banner">
-			<div id="login">
-				<a href="login.html">LOGIN</a>
+{% extends "blog/base.html" %}
+
+{% block content %}
+	{% for post in posts %}
+		<div class="post">
+			<div class="date">
+				<p>Published: {{ post.published_date }}</p>
 			</div>
-			<div id="search">
-				<input type="text" placeholder="Search"/>
-			</div>
-			<div id="menu">
-				<ul>
-					<li>ABOUT</li>
-					<li>PROJECTS</li>
-					<li>TALENT</li>
-					<li>CONTACT</li>
-				</ul>
-			</div>
-		</div>
-		<div id="content">
-			<div id="lhs">
-				<p>la lal ala la</p>
-			</div>
-			<div id="reel">
-                {% for post in posts %}
-                    <div class="frame">
-                        <p>Published: {{ post.published_date }}</p>
-                        <h3><a href="">{{ post.title }}</a></h3>
-                        <p>{{ post.text|linebreaks }}</p>
-				    </div>
-                {% endfor %}
-			</div>
-			<div id="rhs">
-				<p>la lal ala la</p>
-			</div>
-		</div>
-	</div>
-	<div id="footer">
-		<p>Test Blog (c)  2015</p>
-	</div>
-</body>
-</html>
+			<h3><a href="{% url "post_detail" pk=post.pk %}">{{ post.title }}</a></h3>
+        	<p>{{ post.text|linebreaks }}</p>
+    	</div>
+	{% endfor %}
+{% endblock %}
